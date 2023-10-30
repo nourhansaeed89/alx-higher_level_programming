@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 str = "Holberton School"
-str = tr * 3
-print(str)
+n = str * 3
+print(n)
 print(str[:9])
 
