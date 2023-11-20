@@ -6,6 +6,5 @@ def raise_exception():
 # Test case
 try:
     raise_exception()
-except TypeError as te:
-    print(str(te))
-
+except TypeError:
+    print("Exception raised")
