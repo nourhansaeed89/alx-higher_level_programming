@@ -57,10 +57,7 @@ class Rectangle:
     """Return a string representation of the rectangle."""
     if self.__width == 0 or self.__height == 0:
         return ""
-    rectangle_rows = [
-    str(self.print_symbol) * self.__width
-    for _ in range(self.__height)
-    ]
+    rectangle_rows = [str(self.print_symbol) * self.__width for _ in range(self.__height)]
     return "\n".join(rectangle_rows)
 
     def __repr__(self):
