@@ -1,4 +1,15 @@
-    @property
+#!/usr/bin/python3
+"""Rectangle module."""
+
+
+class Rectangle:
+    """Define a rectangle."""
+    def __init__(self, width=0, height=0):
+        """Initialize a new Rectangle instance."""
+        self.width = width
+        self.height = height
+
+@property
     def width(self):
         """Retrieve the width of the rectangle."""
         return self.__width
