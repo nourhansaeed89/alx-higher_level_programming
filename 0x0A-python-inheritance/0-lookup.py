@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module for lookup"""
 
+
 def lookup(obj):
     """Look up object.
     Args:
