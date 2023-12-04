@@ -1,4 +1,4 @@
-!/usr/bin/python3
+#!/usr/bin/python3
 '''Module for the_same_class method.'''
 
 
