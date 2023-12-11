@@ -22,9 +22,6 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
-        """Setter for width attribute"""
-        self.validate_non_negative_int("width", value)
-        self.__width = value
 
     @property
     def height(self):
@@ -33,8 +30,6 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        """Setter for height attribute"""
-        self.validate_non_negative_int("height", value)
         self.__height = value
 
     @property
@@ -44,8 +39,6 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        """Setter for x attribute"""
-        self.validate_non_negative_int("x", value)
         self.__x = value
 
     @property
@@ -55,6 +48,4 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        """Setter for y attribute"""
-        self.validate_non_negative_int("y", value)
         self.__y = value
