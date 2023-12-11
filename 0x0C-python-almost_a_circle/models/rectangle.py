@@ -58,10 +58,3 @@ class Rectangle(Base):
         """Setter for y attribute"""
         self.validate_non_negative_int("y", value)
         self.__y = value
-
-    def validate_non_negative_int(self, attribute, value):
-        """Validate that the given value is a non-negative integer"""
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(attribute))
-        if value < 0:
-            raise ValueError("{} must be >= 0".format(attribute))
