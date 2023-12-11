@@ -54,11 +54,11 @@ class Rectangle(Base):
         self.validate_integer("y", value)
         self.__y = value
 
-    def validate_non_negative_int(self, attribute, value, eq=True):
+    def validate_integer(self, name, value, eq=True):
         """Validate that the given value is a non-negative integer"""
         if type(value) != int:
-            raise TypeError("{} must be an integer".format(attribute))
+            raise TypeError("{} must be an integer".format(name))
         if eq and value < 0:
-            raise ValueError("{} must be >= 0".format(attribute))
+            raise ValueError("{} must be >= 0".format(name))
         elif not eq and value <= 0:
-            raise ValueError("{} must be > 0".format(attribute))
+            raise ValueError("{} must be > 0".format(name))
