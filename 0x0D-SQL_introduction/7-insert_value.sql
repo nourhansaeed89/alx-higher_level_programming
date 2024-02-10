@@ -1,0 +1,4 @@
+-- This script inserts a new row into the table first_table.
+
+-- Insert a new row with id = 89 and name = 'Best School' into first_table.
+INSERT INTO first_table (id, name) VALUES (89, 'Best School');
