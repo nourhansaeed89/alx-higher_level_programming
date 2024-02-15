@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// rec class
 
 class Rectangle {
   constructor(w, h) {
