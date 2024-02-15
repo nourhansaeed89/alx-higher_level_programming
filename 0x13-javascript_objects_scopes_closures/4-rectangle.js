@@ -1,6 +1,6 @@
 #!/usr/bin/node
-// rec class
 
+// Define a class called Rectangle
 class Rectangle {
   constructor(w, h) {
     if (w > 0 && h > 0) {
