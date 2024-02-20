@@ -1,43 +1,27 @@
 #!/usr/bin/python3
 """
-This script displays all values in the states table of hbtn_0e_0_usa where name matches the argument.
+Script hat takes in an argument and displays all values in the states
+table of hbtn_0e_0_usa where name matches the argument
 """
-
-import sys
 import MySQLdb
+from sys import argv
 
-# Check if the script is being run directly
-if __name__ == "__main__":
-    # Check if the correct number of arguments is provided
-    if len(sys.argv) != 5:
-        print("Usage: ./2-my_filter_states.py <mysql_username> <mysql_password> <database_name> <state_name>")
-        sys.exit(1)
+# The code should not be executed when imported
+if __name__ == '__main__':
 
-    # Get command line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
-    state_name = sys.argv[4]
+    # make a connection to the database
+    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                         passwd=argv[2], db=argv[3])
 
-    try:
-        # Connect to MySQL server
-        conn = MySQLdb.connect(host='localhost', port=3306, user=mysql_username, passwd=mysql_password, db=database_name)
-        cursor = conn.cursor()
+    # It gives us the ability to have multiple seperate working environments
+    # through the same connection to the database.
+    cur = db.cursor()
+    nmeSr = "SELECT * FROM states WHERE name LIKE BINARY '{}'".format(argv[4])
+    cur.execute(nmeSr)
 
-        # Execute SQL query to select states with matching name
-        cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (state_name,))
-
-        # Fetch all rows
-        states = cursor.fetchall()
-
-        # Close connection
-        cursor.close()
-        conn.close()
-
-        # Display results
-        for state in states:
-            print(state)
-
-    except MySQLdb.Error as e:
-        print(f"Error {e.args[0]}: {e.args[1]}")
-        sys.exit(1)
+    rows = cur.fetchall()
+    for i in rows:
+        print(i)
+    # Clean up process
+    cur.close()
+    db.close()
