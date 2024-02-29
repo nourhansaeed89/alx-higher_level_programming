@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 def find_peak(list_of_integers):
     """Binary search implementation for finding peak in list of integers."""
     if not list_of_integers:
