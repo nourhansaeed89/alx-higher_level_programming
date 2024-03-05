@@ -1,22 +1,19 @@
 #!/usr/bin/python3
-"""script for posting data to star wars api
-"""
+import requests
+import sys
+
 if __name__ == "__main__":
-    import requests
-    import sys
-    url = "https://api.github.com/"
-    username = sys.argv[1]
-    repo = sys.argv[2]
-    commits_url = url + "repos/{}/{}/commits".format(username, repo)
-    response = requests.get(commits_url)
-    if response.status_code == requests.codes.ok and len(response.text) > 0:
-        try:
-            my_obj = response.json()
-            for i, obj in enumerate(my_obj):
-                if i == 10:
-                    break
-                if type(obj) is dict:
-                    name = obj.get('commit').get('author').get('name')
-                    print("{}: {}".format(obj.get('sha'), name))
-        except ValueError as invalid_json:
-            pass
+    repo_name = sys.argv[1]
+    owner_name = sys.argv[2]
+
+    url = f"https://api.github.com/repos/{owner_name}/{repo_name}/commits"
+    response = requests.get(url)
+    commits = response.json()
+
+    if len(commits) > 0:
+        for commit in commits[:10]:
+            sha = commit['sha']
+            author_name = commit['commit']['author']['name']
+            print(f"{sha}: {author_name}")
+    else:
+        print("No commits found.")
