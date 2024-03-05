@@ -1,11 +1,14 @@
 #!/usr/bin/python3
-import urllib.request
-
+"""script for testing status of web pages
+"""
 if __name__ == "__main__":
-    url = "https://alx-intranet.hbtn.io/status"
+    import urllib.request
+    url = "https://intranet.hbtn.io/status"
     with urllib.request.urlopen(url) as response:
-        html = response.read()
-        print("Body response:")
-        print("\t- type:", type(html))
-        print("\t- content:", html)
-        print("\t- utf8 content:", html.decode("utf-8"))
+        bytes_content = response.read()
+        content = bytes_content.decode('utf-8')
+        print_str = '''Body response:
+\t- type: {}
+\t- content: {}
+\t- utf8 content: {}'''.format(type(bytes_content), bytes_content, content)
+        print(print_str)
